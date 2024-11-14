@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5BC174D72CE69924005FDB75 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BC174D62CE69924005FDB75 /* StoreKit.framework */; };
 		5BC174DA2CE69975005FDB75 /* ShinaraSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5BC174D92CE69975005FDB75 /* ShinaraSDK */; };
+		5BC175022CE6A228005FDB75 /* ShinaraSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5BC175012CE6A228005FDB75 /* ShinaraSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC175022CE6A228005FDB75 /* ShinaraSDK in Frameworks */,
 				5BC174DA2CE69975005FDB75 /* ShinaraSDK in Frameworks */,
 				5BC174D72CE69924005FDB75 /* StoreKit.framework in Frameworks */,
 			);
@@ -83,6 +85,7 @@
 			name = "shinara-example-swift-ios";
 			packageProductDependencies = (
 				5BC174D92CE69975005FDB75 /* ShinaraSDK */,
+				5BC175012CE6A228005FDB75 /* ShinaraSDK */,
 			);
 			productName = "shinara-example-swift-ios";
 			productReference = 5BC174B72CE698A4005FDB75 /* shinara-example-swift-ios.app */;
@@ -113,7 +116,7 @@
 			mainGroup = 5BC174AE2CE698A4005FDB75;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				5BC174D82CE69975005FDB75 /* XCLocalSwiftPackageReference "../../new-kinda-ads/swift-sdk/dist/shinara-swift-sdk-1.0.0" */,
+				5BC175002CE6A228005FDB75 /* XCLocalSwiftPackageReference "shinara-swift-sdk-1.0.0" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5BC174B82CE698A4005FDB75 /* Products */;
@@ -345,14 +348,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		5BC174D82CE69975005FDB75 /* XCLocalSwiftPackageReference "../../new-kinda-ads/swift-sdk/dist/shinara-swift-sdk-1.0.0" */ = {
+		5BC175002CE6A228005FDB75 /* XCLocalSwiftPackageReference "shinara-swift-sdk-1.0.0" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../new-kinda-ads/swift-sdk/dist/shinara-swift-sdk-1.0.0";
+			relativePath = "shinara-swift-sdk-1.0.0";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		5BC174D92CE69975005FDB75 /* ShinaraSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ShinaraSDK;
+		};
+		5BC175012CE6A228005FDB75 /* ShinaraSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ShinaraSDK;
 		};
