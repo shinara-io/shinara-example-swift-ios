@@ -4,40 +4,59 @@ import ShinaraSDK
 
 struct ContentView: View {
     @StateObject private var store = IAPStore()
-    @State private var referralCode = "" // State for storing referral code
-    @State private var showError = false // State for showing error alert
-    @State private var errorMessage = "" // State for error message
+    @State private var referralCode = ""
+    @State private var showError = false
+    @State private var errorMessage = ""
     
     var body: some View {
-        VStack {
-            // Textfield for referral code
-            TextField("Enter Referral Code", text: $referralCode)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+        VStack(alignment: .leading) {
+            // Header label
+            Text("Shinara iOS SDK Example Code")
+                .font(.headline)
+                .padding(.bottom, 5)
+            
+            // Textfield with black border and label
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Referral Code")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+                TextField("Enter Referral Code", text: $referralCode)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .padding(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+            }
+            .padding(.bottom, 20)
             
             // Button to validate and purchase
             Button("Buy Subscription") {
                 validateAndPurchase()
             }
             .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(8)
             
             // Display status of purchase
             Text(store.purchaseStatus)
                 .padding()
         }
+        .padding()
         .alert("Error", isPresented: $showError) {
             Button("OK") { }
         } message: {
             Text(errorMessage)
         }
-        .padding()
         .onAppear {
             store.fetchProducts()
         }
     }
     
     private func validateAndPurchase() {
-        // Don't proceed if referral code is empty
         guard !referralCode.isEmpty else {
             errorMessage = "Please enter a referral code"
             showError = true
