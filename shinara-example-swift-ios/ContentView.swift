@@ -63,15 +63,14 @@ struct ContentView: View {
             return
         }
         
-        ShinaraSDK.instance.validateReferralCode(code: referralCode) { result in
-            switch result {
-            case .success(_):
-                // If validation successful, proceed with purchase
-                store.purchaseSubscription()
-            case .failure(let error):
-                // If validation fails, show error
+        Task {
+            do {
+                try await ShinaraSDK.instance.validateReferralCode(code: referralCode)
+                return
+            } catch {
                 errorMessage = error.localizedDescription
                 showError = true
+                return
             }
         }
     }

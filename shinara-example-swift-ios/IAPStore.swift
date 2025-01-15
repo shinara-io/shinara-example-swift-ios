@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import StoreKit
+import ShinaraSDK
 
 class IAPStore: NSObject, ObservableObject {
     @Published var purchaseStatus = "Ready to purchase"
@@ -49,6 +50,12 @@ extension IAPStore: SKPaymentTransactionObserver {
             case .purchased:
                 // Handle successful purchase
                 purchaseStatus = "Purchase Successful!"
+                Task.detached {
+                    do {
+                        // fire and forget
+                        try await ShinaraSDK.instance.attributePurchase(productId: transaction.payment.productIdentifier, transactionId: transaction.transactionIdentifier ?? "")
+                    }
+                }
                 SKPaymentQueue.default().finishTransaction(transaction)
                 
             case .failed:
